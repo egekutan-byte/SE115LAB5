@@ -1,14 +1,26 @@
-import java.util.Scanner;
+import java.util.ArrayList;
 
-public class FibonacciNumbers {
-    public static int fib(int x) {
-        if(x==1) return 1;
-        if(x==0) return 0;
-        else return fib(x-1)+fib(x-2);
+public class BonusProject {
+    public static ArrayList<Integer> fibList;
+
+    public static int fib(int n) {
+        if (fibList == null) {
+            fibList = new ArrayList<Integer>();
+            fibList.add(0);
+            fibList.add(1);
+        }
+        if (n >= fibList.size()) {
+            Integer a=fib(n-1)+fib(n-2);
+            fibList.add(a);
+            return a;
+        }else{
+            return fibList.get(n);
+        }
     }
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        int x= sc.nextInt();
-        System.out.println("The "+x+"th. number in the fibonacci sequence is "+ fib(x));
+        System.out.println(fib(5));
+        System.out.println(fibList);
+        System.out.println(fib(10));
+        System.out.println(fibList);
     }
 }
